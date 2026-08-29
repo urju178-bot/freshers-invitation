@@ -3,161 +3,682 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KPC Freshers Party Invitation</title>
+<title>Freshers Invitation</title>
+
 <style>
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;background:#210b06;color:#f8d98a;font-family:Georgia,serif}
-body{min-height:100vh}
+
+html,body{
+margin:0;
+padding:0;
+background:#160604;
+color:#f8d98a;
+font-family:Georgia,serif;
+}
+
+body{
+min-height:100vh;
+overflow-x:hidden;
+}
+
+/* OPENING SCREEN */
 .opening{
-  min-height:100vh;display:flex;align-items:center;justify-content:center;
-  background:
-    radial-gradient(circle at 50% 45%,#7b3517 0,#45170d 32%,#210b06 72%);
-  position:relative;overflow:hidden;text-align:center;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+overflow:hidden;
+text-align:center;
+
+background:
+radial-gradient(circle at center,#743416 0%,#3b1209 38%,#160604 78%);
 }
+
+/* GOLDEN PARTICLES */
 .opening:before{
-  content:"";position:absolute;inset:0;opacity:.35;
-  background-image:radial-gradient(#d9a441 1px,transparent 1px);
-  background-size:55px 55px;
+content:"";
+position:absolute;
+inset:0;
+opacity:.35;
+background-image:radial-gradient(#e1b653 1px,transparent 1px);
+background-size:55px 55px;
 }
+
+/* GLOW */
+.opening:after{
+content:"";
+position:absolute;
+width:500px;
+height:500px;
+border-radius:50%;
+background:rgba(214,145,50,.12);
+filter:blur(70px);
+}
+
+/* ARCH */
 .arch{
-  position:relative;z-index:1;width:min(620px,88vw);min-height:490px;
-  border:1px solid #d9a441;border-radius:320px 320px 35px 35px;
-  display:flex;align-items:center;justify-content:center;padding:45px 25px;
-  box-shadow:0 0 70px rgba(207,132,44,.35),inset 0 0 35px rgba(207,132,44,.12);
-  background:rgba(38,10,5,.45);
+position:relative;
+z-index:2;
+
+width:min(620px,88vw);
+min-height:500px;
+
+border:1px solid #d9a441;
+border-radius:320px 320px 35px 35px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+padding:45px 25px;
+
+background:rgba(35,8,4,.72);
+
+box-shadow:
+0 0 70px rgba(207,132,44,.35),
+inset 0 0 40px rgba(207,132,44,.12);
+
+animation:fadeIn 1.5s ease;
 }
-.content{max-width:520px}
-.om{font-size:64px;margin-bottom:20px}
-h1{font-size:44px;margin:0 0 18px;letter-spacing:2px}
-.subtitle{font-size:22px;letter-spacing:3px;margin:18px 0 30px}
-.small{font-size:15px;letter-spacing:2px;margin:22px 0 28px}
+
+.content{
+max-width:520px;
+}
+
+/* OM */
+.om{
+font-size:70px;
+margin-bottom:20px;
+text-shadow:0 0 20px #e4b44c;
+animation:glow 2s infinite alternate;
+}
+
+/* HINDI */
+h1{
+font-size:46px;
+margin:0 0 18px;
+letter-spacing:2px;
+}
+
+/* SUBTITLE */
+.subtitle{
+font-size:22px;
+letter-spacing:4px;
+margin:18px 0 32px;
+}
+
+/* BUTTON */
 .openBtn{
-  border:1px solid #e4b44c;background:#87350f;color:#ffe7a8;
-  padding:17px 42px;border-radius:40px;font-size:18px;letter-spacing:2px;
-  cursor:pointer;box-shadow:0 0 22px rgba(226,164,55,.2)
+border:1px solid #e4b44c;
+background:linear-gradient(135deg,#a94d17,#71300f);
+color:#ffe7a8;
+
+padding:17px 42px;
+border-radius:40px;
+
+font-size:18px;
+letter-spacing:2px;
+
+cursor:pointer;
+
+box-shadow:
+0 0 20px rgba(226,164,55,.25);
+
+transition:.3s;
 }
-.openBtn:hover{background:#a34615}
-.invitation{display:none;min-height:100vh;padding:25px 12px 60px;text-align:center;
-background:linear-gradient(180deg,#2a0b06,#160604)}
-.invitation.show{display:block}
-.invitation img{display:block;width:min(100%,820px);height:auto;margin:0 auto;border-radius:8px;
-box-shadow:0 12px 45px rgba(0,0,0,.6)}
-.scratchWrap{width:min(680px,94vw);margin:45px auto 0;padding:28px 18px 35px;
-border:1px solid #c99835;border-radius:18px;background:linear-gradient(145deg,#4b170c,#241008);
-box-shadow:0 0 35px rgba(201,152,53,.18)}
-.scratchTitle{font-size:25px;margin:0 0 8px}
-.hint{font-size:14px;color:#e7c77f;margin:0 0 18px}
-.scratchBox{position:relative;width:min(560px,90vw);height:150px;margin:auto;border-radius:15px;overflow:hidden;
-background:#f7e6b2;display:flex;align-items:center;justify-content:center}
-.date{color:#5c1d0e;font-size:30px;font-weight:bold;letter-spacing:2px;padding:10px}
-#scratch{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:crosshair}
-.musicBtn{position:fixed;right:18px;bottom:18px;z-index:10;border:1px solid #d9a441;
-background:#42150b;color:#ffe4a0;border-radius:50%;width:52px;height:52px;cursor:pointer;font-size:20px;
-display:none}
-.musicBtn.show{display:block}
+
+.openBtn:hover{
+transform:scale(1.06);
+box-shadow:0 0 35px rgba(226,164,55,.5);
+}
+
+/* INVITATION */
+.invitation{
+display:none;
+min-height:100vh;
+padding:30px 12px 70px;
+text-align:center;
+
+background:
+radial-gradient(circle at top,#55200e,#210905 45%,#100302);
+}
+
+.invitation.show{
+display:block;
+animation:fadeIn 1s ease;
+}
+
+.invitation img{
+display:block;
+
+width:min(100%,820px);
+height:auto;
+
+margin:0 auto;
+
+border-radius:8px;
+
+box-shadow:
+0 15px 50px rgba(0,0,0,.7);
+}
+
+/* SCRATCH CARD */
+.scratchWrap{
+width:min(680px,94vw);
+
+margin:45px auto 0;
+
+padding:28px 18px 35px;
+
+border:1px solid #c99835;
+border-radius:18px;
+
+background:
+linear-gradient(145deg,#4b170c,#241008);
+
+box-shadow:
+0 0 35px rgba(201,152,53,.18);
+}
+
+.scratchTitle{
+font-size:25px;
+margin:0 0 8px;
+}
+
+.hint{
+font-size:14px;
+color:#e7c77f;
+margin:0 0 18px;
+}
+
+.scratchBox{
+position:relative;
+
+width:min(560px,90vw);
+height:150px;
+
+margin:auto;
+
+border-radius:15px;
+overflow:hidden;
+
+background:#f7e6b2;
+
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.date{
+color:#5c1d0e;
+font-size:30px;
+font-weight:bold;
+letter-spacing:2px;
+padding:10px;
+}
+
+#scratch{
+position:absolute;
+inset:0;
+
+width:100%;
+height:100%;
+
+touch-action:none;
+cursor:crosshair;
+}
+
+/* MUSIC BUTTON */
+.musicBtn{
+position:fixed;
+
+right:18px;
+bottom:18px;
+
+z-index:10;
+
+border:1px solid #d9a441;
+
+background:#42150b;
+color:#ffe4a0;
+
+border-radius:50%;
+
+width:55px;
+height:55px;
+
+cursor:pointer;
+
+font-size:22px;
+
+display:none;
+
+box-shadow:0 0 20px rgba(217,164,65,.3);
+}
+
+.musicBtn.show{
+display:block;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:scale(.96);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
+@keyframes glow{
+from{
+text-shadow:0 0 10px rgba(228,180,76,.3);
+}
+to{
+text-shadow:0 0 30px rgba(228,180,76,.9);
+}
+}
+
+/* MOBILE */
 @media(max-width:600px){
- h1{font-size:32px}.om{font-size:50px}.arch{min-height:440px}
- .subtitle{font-size:17px}.openBtn{padding:15px 28px;font-size:15px}
- .date{font-size:22px}
+
+h1{
+font-size:34px;
+}
+
+.om{
+font-size:55px;
+}
+
+.arch{
+min-height:440px;
+}
+
+.subtitle{
+font-size:17px;
+}
+
+.openBtn{
+padding:15px 28px;
+font-size:15px;
+}
+
+.date{
+font-size:22px;
+}
+
 }
 </style>
 </head>
+
 <body>
 
+<!-- OPENING -->
 <section class="opening" id="opening">
-  <div class="arch">
-    <div class="content">
-      <div class="om">ॐ</div>
-      <h1>शुभ आरम्भ</h1>
-      <div class="subtitle">A NEW BEGINNING AWAITS</div>
-      <button class="openBtn" id="openBtn">OPEN THE INVITATION</button>
-    </div>
-  </div>
+
+<div class="arch">
+
+<div class="content">
+
+<div class="om">ॐ</div>
+
+<h1>शुभ आरम्भ</h1>
+
+<div class="subtitle">
+A NEW BEGINNING AWAITS
+</div>
+
+<button class="openBtn" id="openBtn">
+OPEN THE INVITATION
+</button>
+
+</div>
+
+</div>
+
 </section>
 
+
+<!-- INVITATION -->
 <section class="invitation" id="invitation">
-  <img src="invitation.png" alt="KPC Management Freshers Party Invitation">
 
-  <div class="scratchWrap">
-    <h2 class="scratchTitle">✨ A Little Surprise ✨</h2>
-    <p class="hint">Touch / drag your finger or mouse over the golden card to reveal the date</p>
-    <div class="scratchBox">
-      <div class="date">12th SEPTEMBER 2026</div>
-      <canvas id="scratch"></canvas>
-    </div>
-  </div>
+<img
+src="invitation.png"
+alt="Freshers Party Invitation"
+>
+
+<div class="scratchWrap">
+
+<h2 class="scratchTitle">
+✨ A Little Surprise ✨
+</h2>
+
+<p class="hint">
+Touch / drag your finger or mouse over the golden card to reveal the date
+</p>
+
+<div class="scratchBox">
+
+<div class="date">
+12th SEPTEMBER 2026
+</div>
+
+<canvas id="scratch"></canvas>
+
+</div>
+
+</div>
+
 </section>
 
-<button class="musicBtn" id="musicBtn" aria-label="Toggle music">♫</button>
-<audio id="music" src="krishna_krish_flute.mp3" preload="auto" loop></audio>
+
+<!-- MUSIC -->
+<button
+class="musicBtn"
+id="musicBtn"
+aria-label="Toggle music">
+♫
+</button>
+
+<audio
+id="music"
+src="krishna_krish_flute.mp3"
+preload="auto"
+loop>
+</audio>
+
 
 <script>
-const openBtn=document.getElementById('openBtn');
-const opening=document.getElementById('opening');
-const invitation=document.getElementById('invitation');
-const music=document.getElementById('music');
-const musicBtn=document.getElementById('musicBtn');
 
-openBtn.addEventListener('click', async ()=>{
-  opening.style.display='none';
-  invitation.classList.add('show');
-  musicBtn.classList.add('show');
-  try{
-    await music.play();
-    musicBtn.textContent='♫';
-  }catch(e){
-    musicBtn.textContent='🔇';
-  }
-  window.scrollTo({top:0,behavior:'smooth'});
+const openBtn =
+document.getElementById("openBtn");
+
+const opening =
+document.getElementById("opening");
+
+const invitation =
+document.getElementById("invitation");
+
+const music =
+document.getElementById("music");
+
+const musicBtn =
+document.getElementById("musicBtn");
+
+
+/* OPEN INVITATION */
+
+openBtn.addEventListener("click", async function(){
+
+opening.style.display="none";
+
+invitation.classList.add("show");
+
+musicBtn.classList.add("show");
+
+/* START MUSIC AFTER USER CLICK */
+
+try{
+
+music.currentTime=0;
+
+await music.play();
+
+musicBtn.textContent="♫";
+
+}catch(error){
+
+musicBtn.textContent="🔇";
+
+}
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
 });
 
-musicBtn.addEventListener('click', async ()=>{
-  if(music.paused){
-    try{await music.play();musicBtn.textContent='♫';}catch(e){}
-  }else{
-    music.pause();musicBtn.textContent='🔇';
-  }
 });
 
-const canvas=document.getElementById('scratch');
-const box=document.querySelector('.scratchBox');
-const ctx=canvas.getContext('2d');
-let drawing=false, revealed=0;
+
+/* MUSIC BUTTON */
+
+musicBtn.addEventListener("click", async function(){
+
+if(music.paused){
+
+try{
+
+await music.play();
+
+musicBtn.textContent="♫";
+
+}catch(error){
+
+musicBtn.textContent="🔇";
+
+}
+
+}else{
+
+music.pause();
+
+musicBtn.textContent="🔇";
+
+}
+
+});
+
+
+/* SCRATCH CARD */
+
+const canvas =
+document.getElementById("scratch");
+
+const box =
+document.querySelector(".scratchBox");
+
+const ctx =
+canvas.getContext("2d");
+
+
+let drawing=false;
+
 
 function resizeCanvas(){
-  const r=box.getBoundingClientRect();
-  const dpr=window.devicePixelRatio||1;
-  canvas.width=r.width*dpr; canvas.height=r.height*dpr;
-  canvas.style.width=r.width+'px'; canvas.style.height=r.height+'px';
-  ctx.setTransform(dpr,0,0,dpr,0,0);
-  ctx.globalCompositeOperation='source-over';
-  ctx.fillStyle='#b88628';
-  ctx.fillRect(0,0,r.width,r.height);
-  ctx.fillStyle='rgba(255,230,155,.35)';
-  for(let x=0;x<r.width;x+=18) for(let y=0;y<r.height;y+=18){
-    ctx.beginPath();ctx.arc(x,y,1.2,0,Math.PI*2);ctx.fill();
-  }
+
+const r=box.getBoundingClientRect();
+
+const dpr=window.devicePixelRatio || 1;
+
+canvas.width=r.width*dpr;
+
+canvas.height=r.height*dpr;
+
+canvas.style.width=r.width+"px";
+
+canvas.style.height=r.height+"px";
+
+ctx.setTransform(dpr,0,0,dpr,0,0);
+
+ctx.globalCompositeOperation="source-over";
+
+ctx.fillStyle="#b88628";
+
+ctx.fillRect(
+0,
+0,
+r.width,
+r.height
+);
+
+/* GOLDEN TEXTURE */
+
+ctx.fillStyle="rgba(255,230,155,.35)";
+
+for(
+let x=0;
+x<r.width;
+x+=18
+){
+
+for(
+let y=0;
+y<r.height;
+y+=18
+){
+
+ctx.beginPath();
+
+ctx.arc(
+x,
+y,
+1.2,
+0,
+Math.PI*2
+);
+
+ctx.fill();
+
 }
+
+}
+
+}
+
+
 function scratch(x,y){
-  ctx.globalCompositeOperation='destination-out';
-  ctx.beginPath();ctx.arc(x,y,24,0,Math.PI*2);ctx.fill();
+
+ctx.globalCompositeOperation=
+"destination-out";
+
+ctx.beginPath();
+
+ctx.arc(
+x,
+y,
+24,
+0,
+Math.PI*2
+);
+
+ctx.fill();
+
 }
-function pos(e){
-  const r=canvas.getBoundingClientRect();
-  const p=e.touches?e.touches[0]:e;
-  return {x:p.clientX-r.left,y:p.clientY-r.top};
+
+
+function getPosition(e){
+
+const r=
+canvas.getBoundingClientRect();
+
+const p=
+e.touches
+?e.touches[0]
+:e;
+
+return{
+
+x:p.clientX-r.left,
+
+y:p.clientY-r.top
+
+};
+
 }
-function start(e){drawing=true;const p=pos(e);scratch(p.x,p.y);e.preventDefault()}
-function move(e){if(!drawing)return;const p=pos(e);scratch(p.x,p.y);e.preventDefault()}
-function end(){drawing=false}
-canvas.addEventListener('mousedown',start);
-canvas.addEventListener('mousemove',move);
-window.addEventListener('mouseup',end);
-canvas.addEventListener('touchstart',start,{passive:false});
-canvas.addEventListener('touchmove',move,{passive:false});
-window.addEventListener('touchend',end);
-window.addEventListener('resize',resizeCanvas);
+
+
+function startScratch(e){
+
+drawing=true;
+
+const p=
+getPosition(e);
+
+scratch(
+p.x,
+p.y
+);
+
+e.preventDefault();
+
+}
+
+
+function moveScratch(e){
+
+if(!drawing)return;
+
+const p=
+getPosition(e);
+
+scratch(
+p.x,
+p.y
+);
+
+e.preventDefault();
+
+}
+
+
+function endScratch(){
+
+drawing=false;
+
+}
+
+
+/* MOUSE */
+
+canvas.addEventListener(
+"mousedown",
+startScratch
+);
+
+canvas.addEventListener(
+"mousemove",
+moveScratch
+);
+
+window.addEventListener(
+"mouseup",
+endScratch
+);
+
+
+/* TOUCH */
+
+canvas.addEventListener(
+"touchstart",
+startScratch,
+{passive:false}
+);
+
+canvas.addEventListener(
+"touchmove",
+moveScratch,
+{passive:false}
+);
+
+window.addEventListener(
+"touchend",
+endScratch
+);
+
+
+/* RESIZE */
+
+window.addEventListener(
+"resize",
+resizeCanvas
+);
+
 resizeCanvas();
+
 </script>
+
 </body>
 </html>
