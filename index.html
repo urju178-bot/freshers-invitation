@@ -1,12 +1,163 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><title>KPC Freshers Invitation</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KPC Freshers Party Invitation</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#080302;color:#f8e2a1;font-family:Georgia,serif}#intro{position:fixed;inset:0;z-index:9;display:grid;place-items:center;background:radial-gradient(circle,#7d3814,#351007 45%,#090302);transition:1s}.hide{opacity:0;visibility:hidden}.spark{position:absolute;inset:0;background-image:radial-gradient(#f2c45d 1px,transparent 1px);background-size:45px 45px;opacity:.18}.arch{width:min(410px,90%);padding:45px 25px 35px;text-align:center;border:1px solid #d7aa4b;border-radius:220px 220px 25px 25px;background:linear-gradient(145deg,#5d1e0c,#190605);box-shadow:0 0 80px #d99d3b55}.arch h1{font-size:31px;letter-spacing:3px}.arch p{color:#e5bd67;letter-spacing:2px}.open{padding:14px 28px;border-radius:30px;border:1px solid #e4b44e;background:#7b2f0e;color:#ffe9ad;letter-spacing:2px}.stage{min-height:100vh;padding:18px 10px 70px;display:flex;justify-content:center;background:radial-gradient(circle at top,#421509,#0b0302 65%)}.wrap{width:min(650px,100%)}.top{height:80px;display:grid;place-items:center;border:1px solid #a97629;border-radius:18px 18px 0 0;background:#351006;letter-spacing:4px}.card{padding:8px;background:#f4dfad;border:2px solid #b77d29;box-shadow:0 25px 60px #000}.card img{width:100%;display:block}.hint{text-align:center;margin:18px;color:#f0c86c}.reveal{position:relative;width:88%;height:180px;margin:auto;overflow:hidden;border:2px solid #bd8229;border-radius:16px;background:#f5dfa9}.under{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#4a180c}.date{font-size:30px;font-weight:bold;margin:9px}.info{font-size:17px}canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none}.finish{text-align:center;opacity:0;transition:.7s;margin-top:14px}.show{opacity:1}#music{display:none;position:fixed;right:14px;top:14px;z-index:10;border:1px solid #d5a342;background:#2a0c07;color:#f5d27d;border-radius:50%;width:44px;height:44px}
-</style></head><body><audio id="bgm" src="krishna_krish_flute.mp3" loop></audio>
-<div id="intro"><div class="spark"></div><div class="arch"><div style="font-size:45px">ॐ</div><h1>शुभ आरम्भ</h1><p>A NEW BEGINNING AWAITS</p><p style="font-size:11px">KPC MANAGEMENT • FRESHERS PARTY</p><button class="open" onclick="begin()">OPEN THE INVITATION</button></div></div>
-<button id="music" onclick="toggle()">♫</button><main class="stage"><div class="wrap"><div class="top">✦ KPC MANAGEMENT ✦</div><div class="card"><img src="invitation.png"></div><div class="hint">✨ TOUCH & SCRATCH TO REVEAL THE DATE ✨</div><div class="reveal"><div class="under"><div>THE DATE OF OUR CELEBRATION</div><div class="date">12th SEPTEMBER 2026</div><div class="info">10:00 AM • STILT AREA</div></div><canvas id="c"></canvas></div><div id="done" class="finish">🌼 The date is revealed — let the celebration begin! 🌼</div></div></main>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#210b06;color:#f8d98a;font-family:Georgia,serif}
+body{min-height:100vh}
+.opening{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  background:
+    radial-gradient(circle at 50% 45%,#7b3517 0,#45170d 32%,#210b06 72%);
+  position:relative;overflow:hidden;text-align:center;
+}
+.opening:before{
+  content:"";position:absolute;inset:0;opacity:.35;
+  background-image:radial-gradient(#d9a441 1px,transparent 1px);
+  background-size:55px 55px;
+}
+.arch{
+  position:relative;z-index:1;width:min(620px,88vw);min-height:490px;
+  border:1px solid #d9a441;border-radius:320px 320px 35px 35px;
+  display:flex;align-items:center;justify-content:center;padding:45px 25px;
+  box-shadow:0 0 70px rgba(207,132,44,.35),inset 0 0 35px rgba(207,132,44,.12);
+  background:rgba(38,10,5,.45);
+}
+.content{max-width:520px}
+.om{font-size:64px;margin-bottom:20px}
+h1{font-size:44px;margin:0 0 18px;letter-spacing:2px}
+.subtitle{font-size:22px;letter-spacing:3px;margin:18px 0 30px}
+.small{font-size:15px;letter-spacing:2px;margin:22px 0 28px}
+.openBtn{
+  border:1px solid #e4b44c;background:#87350f;color:#ffe7a8;
+  padding:17px 42px;border-radius:40px;font-size:18px;letter-spacing:2px;
+  cursor:pointer;box-shadow:0 0 22px rgba(226,164,55,.2)
+}
+.openBtn:hover{background:#a34615}
+.invitation{display:none;min-height:100vh;padding:25px 12px 60px;text-align:center;
+background:linear-gradient(180deg,#2a0b06,#160604)}
+.invitation.show{display:block}
+.invitation img{display:block;width:min(100%,820px);height:auto;margin:0 auto;border-radius:8px;
+box-shadow:0 12px 45px rgba(0,0,0,.6)}
+.scratchWrap{width:min(680px,94vw);margin:45px auto 0;padding:28px 18px 35px;
+border:1px solid #c99835;border-radius:18px;background:linear-gradient(145deg,#4b170c,#241008);
+box-shadow:0 0 35px rgba(201,152,53,.18)}
+.scratchTitle{font-size:25px;margin:0 0 8px}
+.hint{font-size:14px;color:#e7c77f;margin:0 0 18px}
+.scratchBox{position:relative;width:min(560px,90vw);height:150px;margin:auto;border-radius:15px;overflow:hidden;
+background:#f7e6b2;display:flex;align-items:center;justify-content:center}
+.date{color:#5c1d0e;font-size:30px;font-weight:bold;letter-spacing:2px;padding:10px}
+#scratch{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:crosshair}
+.musicBtn{position:fixed;right:18px;bottom:18px;z-index:10;border:1px solid #d9a441;
+background:#42150b;color:#ffe4a0;border-radius:50%;width:52px;height:52px;cursor:pointer;font-size:20px;
+display:none}
+.musicBtn.show{display:block}
+@media(max-width:600px){
+ h1{font-size:32px}.om{font-size:50px}.arch{min-height:440px}
+ .subtitle{font-size:17px}.openBtn{padding:15px 28px;font-size:15px}
+ .date{font-size:22px}
+}
+</style>
+</head>
+<body>
+
+<section class="opening" id="opening">
+  <div class="arch">
+    <div class="content">
+      <div class="om">ॐ</div>
+      <h1>शुभ आरम्भ</h1>
+      <div class="subtitle">A NEW BEGINNING AWAITS</div>
+      <button class="openBtn" id="openBtn">OPEN THE INVITATION</button>
+    </div>
+  </div>
+</section>
+
+<section class="invitation" id="invitation">
+  <img src="invitation.png" alt="KPC Management Freshers Party Invitation">
+
+  <div class="scratchWrap">
+    <h2 class="scratchTitle">✨ A Little Surprise ✨</h2>
+    <p class="hint">Touch / drag your finger or mouse over the golden card to reveal the date</p>
+    <div class="scratchBox">
+      <div class="date">12th SEPTEMBER 2026</div>
+      <canvas id="scratch"></canvas>
+    </div>
+  </div>
+</section>
+
+<button class="musicBtn" id="musicBtn" aria-label="Toggle music">♫</button>
+<audio id="music" src="krishna_krish_flute.mp3" preload="auto" loop></audio>
+
 <script>
-const a=document.getElementById('bgm'),m=document.getElementById('music');function begin(){document.getElementById('intro').classList.add('hide');a.volume=.42;a.play().catch(()=>{});m.style.display='block'}function toggle(){if(a.paused){a.play();m.textContent='♫'}else{a.pause();m.textContent='🔇'}}
-const c=document.getElementById('c'),p=document.querySelector('.reveal'),x=c.getContext('2d',{willReadFrequently:true});let down=0,last=null,done=0;
-function size(){let r=p.getBoundingClientRect(),d=devicePixelRatio||1;c.width=r.width*d;c.height=r.height*d;x.setTransform(d,0,0,d,0,0);let g=x.createLinearGradient(0,0,r.width,r.height);g.addColorStop(0,'#67320e');g.addColorStop(.5,'#dbad4a');g.addColorStop(1,'#783e0c');x.fillStyle=g;x.fillRect(0,0,r.width,r.height);x.fillStyle='#ffe9ac';x.textAlign='center';x.font='bold 18px Georgia';x.fillText('✦ SCRATCH TO REVEAL ✦',r.width/2,r.height/2-5);x.font='13px Georgia';x.fillText('Rub gently with your finger',r.width/2,r.height/2+22)}
-function pos(e){let r=c.getBoundingClientRect(),t=e.touches?e.touches[0]:e;return{x:t.clientX-r.left,y:t.clientY-r.top}}function rub(e){if(done)return;e.preventDefault();let q=pos(e);x.globalCompositeOperation='destination-out';x.beginPath();x.arc(q.x,q.y,31,0,7);x.fill();if(last){x.beginPath();x.moveTo(last.x,last.y);x.lineTo(q.x,q.y);x.lineWidth=62;x.lineCap='round';x.stroke()}last=q;let d=x.getImageData(0,0,c.width,c.height).data,n=0,t=0;for(let i=3;i<d.length;i+=20){t++;if(d[i]<80)n++}if(n/t>.46){done=1;c.style.opacity=0;document.getElementById('done').classList.add('show')}}c.onmousedown=e=>{down=1;rub(e)};c.onmousemove=e=>{if(down)rub(e)};onmouseup=()=>{down=0;last=null};c.ontouchstart=e=>{down=1;rub(e)};c.ontouchmove=e=>{if(down)rub(e)};oncontextmenu=e=>e.preventDefault();size();onresize=size;
-</script></body></html>
+const openBtn=document.getElementById('openBtn');
+const opening=document.getElementById('opening');
+const invitation=document.getElementById('invitation');
+const music=document.getElementById('music');
+const musicBtn=document.getElementById('musicBtn');
+
+openBtn.addEventListener('click', async ()=>{
+  opening.style.display='none';
+  invitation.classList.add('show');
+  musicBtn.classList.add('show');
+  try{
+    await music.play();
+    musicBtn.textContent='♫';
+  }catch(e){
+    musicBtn.textContent='🔇';
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+musicBtn.addEventListener('click', async ()=>{
+  if(music.paused){
+    try{await music.play();musicBtn.textContent='♫';}catch(e){}
+  }else{
+    music.pause();musicBtn.textContent='🔇';
+  }
+});
+
+const canvas=document.getElementById('scratch');
+const box=document.querySelector('.scratchBox');
+const ctx=canvas.getContext('2d');
+let drawing=false, revealed=0;
+
+function resizeCanvas(){
+  const r=box.getBoundingClientRect();
+  const dpr=window.devicePixelRatio||1;
+  canvas.width=r.width*dpr; canvas.height=r.height*dpr;
+  canvas.style.width=r.width+'px'; canvas.style.height=r.height+'px';
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  ctx.globalCompositeOperation='source-over';
+  ctx.fillStyle='#b88628';
+  ctx.fillRect(0,0,r.width,r.height);
+  ctx.fillStyle='rgba(255,230,155,.35)';
+  for(let x=0;x<r.width;x+=18) for(let y=0;y<r.height;y+=18){
+    ctx.beginPath();ctx.arc(x,y,1.2,0,Math.PI*2);ctx.fill();
+  }
+}
+function scratch(x,y){
+  ctx.globalCompositeOperation='destination-out';
+  ctx.beginPath();ctx.arc(x,y,24,0,Math.PI*2);ctx.fill();
+}
+function pos(e){
+  const r=canvas.getBoundingClientRect();
+  const p=e.touches?e.touches[0]:e;
+  return {x:p.clientX-r.left,y:p.clientY-r.top};
+}
+function start(e){drawing=true;const p=pos(e);scratch(p.x,p.y);e.preventDefault()}
+function move(e){if(!drawing)return;const p=pos(e);scratch(p.x,p.y);e.preventDefault()}
+function end(){drawing=false}
+canvas.addEventListener('mousedown',start);
+canvas.addEventListener('mousemove',move);
+window.addEventListener('mouseup',end);
+canvas.addEventListener('touchstart',start,{passive:false});
+canvas.addEventListener('touchmove',move,{passive:false});
+window.addEventListener('touchend',end);
+window.addEventListener('resize',resizeCanvas);
+resizeCanvas();
+</script>
+</body>
+</html>
