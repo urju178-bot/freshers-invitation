@@ -704,55 +704,68 @@ let drawing = false;
 
 
 /* resize */
-
 function resizeCanvas(){
 
-  const rect =
-    box.getBoundingClientRect();
+  const rect = box.getBoundingClientRect();
 
-  const dpr =
-    window.devicePixelRatio || 1;
+  const dpr = window.devicePixelRatio || 1;
 
-  canvas.width =
-    rect.width * dpr;
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
 
-  canvas.height =
-    rect.height * dpr;
+  canvas.style.width = rect.width + "px";
+  canvas.style.height = rect.height + "px";
 
-  canvas.style.width =
-    rect.width + "px";
+  ctx.setTransform(1,0,0,1,0,0);
+  ctx.scale(dpr,dpr);
 
-  canvas.style.height =
-    rect.height + "px";
+  ctx.globalCompositeOperation = "source-over";
 
-  ctx.setTransform(
-    dpr,
+  /* GOLD SCRATCH COVER */
+
+  const gradient = ctx.createLinearGradient(
     0,
     0,
-    dpr,
-    0,
-    0
+    rect.width,
+    rect.height
   );
 
-  /* gold scratch layer */
+  gradient.addColorStop(0,"#e5bd58");
+  gradient.addColorStop(0.5,"#b98220");
+  gradient.addColorStop(1,"#d9aa42");
 
-  ctx.globalCompositeOperation =
-    "source-over";
+  ctx.fillStyle = gradient;
 
-  const gradient =
-    ctx.createLinearGradient(
-      0,
-      0,
-      rect.width,
-      rect.height
-    );
-
-  gradient.addColorStop(
+  ctx.fillRect(
     0,
-    "#d5a638"
+    0,
+    rect.width,
+    rect.height
   );
 
-  gradient.addColorStop(
+  /* GOLD TEXTURE */
+
+  ctx.fillStyle = "rgba(255,240,180,.35)";
+
+  for(let x=0; x<rect.width; x+=18){
+
+    for(let y=0; y<rect.height; y+=18){
+
+      ctx.beginPath();
+
+      ctx.arc(
+        x,
+        y,
+        1.2,
+        0,
+        Math.PI*2
+      );
+
+      ctx.fill();
+
+    }
+  }
+}
     .5,
     "#b77b1e"
   );
