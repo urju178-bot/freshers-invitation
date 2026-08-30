@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Freshers Invitation</title>
+<title>K.P.C. Freshers Invitation</title>
 
 <style>
+
 *{
     box-sizing:border-box;
 }
@@ -128,7 +129,6 @@ body{
 .content{
     position:relative;
     z-index:3;
-
     width:100%;
 }
 
@@ -433,6 +433,7 @@ h1{
 
     .arch{
         min-height:450px;
+        padding:35px 20px;
     }
 
     .om{
@@ -467,6 +468,7 @@ h1{
     }
 
 }
+
 </style>
 </head>
 
@@ -511,13 +513,15 @@ h1{
     class="invitation"
     id="invitation">
 
+    <!-- YOUR NEW INVITATION IMAGE -->
+
     <img
-        src="invitation.png"
-        alt="Freshers Party Invitation"
+        src="0f414ff0-a295-461a-a8df-f985b55c2b4f.png"
+        alt="K.P.C. Freshers Party Invitation"
     >
 
 
-    <!-- SCRATCH CARD -->
+    <!-- ================= SCRATCH CARD ================= -->
 
     <div class="scratchWrap">
 
@@ -566,7 +570,7 @@ h1{
 
 <script>
 
-/* ================= OPENING ================= */
+/* ================= ELEMENTS ================= */
 
 const openBtn =
 document.getElementById("openBtn");
@@ -583,34 +587,59 @@ document.getElementById("music");
 const musicBtn =
 document.getElementById("musicBtn");
 
+const canvas =
+document.getElementById("scratch");
+
+const box =
+document.querySelector(".scratchBox");
+
+const ctx =
+canvas.getContext("2d");
+
+
+let scratching = false;
+
+
+/* ================= OPEN INVITATION ================= */
 
 openBtn.addEventListener(
     "click",
     function(){
 
-        opening.style.display="none";
+        opening.style.display = "none";
 
         invitation.classList.add("show");
 
         musicBtn.classList.add("show");
 
-        /*
-        The click is a user interaction,
-        so the browser allows the music
-        to start here.
-        */
+
+        /* Start music */
 
         music.play()
         .then(function(){
 
-            musicBtn.textContent="♫";
+            musicBtn.textContent = "♫";
 
         })
         .catch(function(){
 
-            musicBtn.textContent="🔇";
+            musicBtn.textContent = "🔇";
 
         });
+
+
+        /*
+        The invitation was hidden before clicking,
+        so the scratch card must be created AFTER
+        the invitation becomes visible.
+        */
+
+        setTimeout(function(){
+
+            createScratchCard();
+
+        },100);
+
 
         window.scrollTo(0,0);
 
@@ -629,7 +658,7 @@ musicBtn.addEventListener(
             music.play()
             .then(function(){
 
-                musicBtn.textContent="♫";
+                musicBtn.textContent = "♫";
 
             });
 
@@ -637,7 +666,7 @@ musicBtn.addEventListener(
 
             music.pause();
 
-            musicBtn.textContent="🔇";
+            musicBtn.textContent = "🔇";
 
         }
 
@@ -645,22 +674,7 @@ musicBtn.addEventListener(
 );
 
 
-/* ================= SCRATCH CARD ================= */
-
-const canvas =
-document.getElementById("scratch");
-
-const box =
-document.querySelector(".scratchBox");
-
-const ctx =
-canvas.getContext("2d");
-
-
-let scratching=false;
-
-
-/* CREATE GOLD COVER */
+/* ================= CREATE SCRATCH CARD ================= */
 
 function createScratchCard(){
 
@@ -679,10 +693,10 @@ function createScratchCard(){
 
 
     canvas.style.width =
-    rect.width+"px";
+    rect.width + "px";
 
     canvas.style.height =
-    rect.height+"px";
+    rect.height + "px";
 
 
     ctx.setTransform(
@@ -748,7 +762,7 @@ function createScratchCard(){
     );
 
 
-    /* CARD TEXT */
+    /* SCRATCH TEXT */
 
     ctx.fillStyle =
     "rgba(255,240,190,.95)";
@@ -768,12 +782,12 @@ function createScratchCard(){
 
     ctx.fillText(
         "✨  SCRATCH TO REVEAL  ✨",
-        rect.width/2,
-        rect.height/2
+        rect.width / 2,
+        rect.height / 2
     );
 
 
-    /* RESET */
+    /* ENABLE SCRATCHING */
 
     ctx.globalCompositeOperation =
     "destination-out";
@@ -781,25 +795,25 @@ function createScratchCard(){
 }
 
 
-/* SCRATCH POSITION */
+/* ================= SCRATCH POSITION ================= */
 
 function getPosition(e){
 
     const rect =
     canvas.getBoundingClientRect();
 
-    return{
+    return {
 
-        x:e.clientX-rect.left,
+        x:e.clientX - rect.left,
 
-        y:e.clientY-rect.top
+        y:e.clientY - rect.top
 
     };
 
 }
 
 
-/* SCRATCH */
+/* ================= SCRATCH ================= */
 
 function scratchAt(x,y){
 
@@ -815,7 +829,7 @@ function scratchAt(x,y){
         y,
         30,
         0,
-        Math.PI*2
+        Math.PI * 2
     );
 
 
@@ -824,25 +838,28 @@ function scratchAt(x,y){
 }
 
 
-/* START SCRATCH */
+/* ================= POINTER DOWN ================= */
 
 canvas.addEventListener(
     "pointerdown",
     function(e){
 
-        scratching=true;
+        scratching = true;
 
         canvas.setPointerCapture(
             e.pointerId
         );
 
+
         const p =
         getPosition(e);
+
 
         scratchAt(
             p.x,
             p.y
         );
+
 
         e.preventDefault();
 
@@ -850,21 +867,28 @@ canvas.addEventListener(
 );
 
 
-/* CONTINUE SCRATCH */
+/* ================= POINTER MOVE ================= */
 
 canvas.addEventListener(
     "pointermove",
     function(e){
 
-        if(!scratching)return;
+        if(!scratching){
+
+            return;
+
+        }
+
 
         const p =
         getPosition(e);
+
 
         scratchAt(
             p.x,
             p.y
         );
+
 
         e.preventDefault();
 
@@ -872,13 +896,14 @@ canvas.addEventListener(
 );
 
 
-/* STOP */
+/* ================= POINTER UP ================= */
 
 canvas.addEventListener(
     "pointerup",
     function(e){
 
-        scratching=false;
+        scratching = false;
+
 
         try{
 
@@ -892,35 +917,31 @@ canvas.addEventListener(
 );
 
 
+/* ================= POINTER CANCEL ================= */
+
 canvas.addEventListener(
     "pointercancel",
     function(){
 
-        scratching=false;
+        scratching = false;
 
     }
 );
 
 
-/* INITIALIZE AFTER PAGE LOAD */
-
-window.addEventListener(
-    "load",
-    function(){
-
-        createScratchCard();
-
-    }
-);
-
-
-/* RESIZE */
+/* ================= RESIZE ================= */
 
 window.addEventListener(
     "resize",
     function(){
 
-        createScratchCard();
+        if(
+            invitation.classList.contains("show")
+        ){
+
+            createScratchCard();
+
+        }
 
     }
 );
