@@ -8,504 +8,463 @@
 
 <style>
 *{
-  box-sizing:border-box;
+    box-sizing:border-box;
 }
 
 html,body{
-  margin:0;
-  padding:0;
-  background:#170604;
-  color:#f8d98a;
-  font-family:Georgia,serif;
+    margin:0;
+    padding:0;
+    width:100%;
+    min-height:100%;
+    font-family:Georgia,serif;
+    background:#170604;
+    color:#f6d98b;
 }
 
 body{
-  min-height:100vh;
-  overflow-x:hidden;
+    overflow-x:hidden;
 }
 
 /* ================= OPENING ================= */
 
 .opening{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-  overflow:hidden;
-  text-align:center;
+    width:100%;
+    min-height:100vh;
 
-  background:
-    radial-gradient(circle at 50% 45%,
-    #7b3517 0%,
-    #4a170d 30%,
-    #260a05 60%,
-    #120302 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+    overflow:hidden;
+
+    text-align:center;
+
+    background:
+    radial-gradient(
+        circle at center,
+        #7d3718 0%,
+        #4b180d 35%,
+        #260a05 65%,
+        #120302 100%
+    );
 }
 
-/* stars / particles */
+/* GOLD PARTICLES */
 
-.opening:before{
-  content:"";
-  position:absolute;
-  inset:0;
+.opening::before{
+    content:"";
+    position:absolute;
+    inset:0;
 
-  background-image:
-    radial-gradient(circle,#e8bd63 1px,transparent 1px),
-    radial-gradient(circle,#c68b35 1px,transparent 1px);
+    background-image:
+    radial-gradient(circle,#edc66d 1px,transparent 1px),
+    radial-gradient(circle,#bd812c 1px,transparent 1px);
 
-  background-size:80px 80px,125px 125px;
-  background-position:0 0,40px 30px;
+    background-size:75px 75px,120px 120px;
 
-  opacity:.3;
+    opacity:.35;
 }
 
-/* central glow */
+/* GLOW */
 
-.opening:after{
-  content:"";
-  position:absolute;
+.opening::after{
+    content:"";
+    position:absolute;
 
-  width:600px;
-  height:600px;
+    width:500px;
+    height:500px;
 
-  border-radius:50%;
+    border-radius:50%;
 
-  background:rgba(220,150,55,.13);
+    background:rgba(225,157,55,.14);
 
-  filter:blur(90px);
-
-  animation:glowPulse 4s infinite alternate;
+    filter:blur(80px);
 }
 
-/* ================= ARCH ================= */
+/* ARCH */
 
 .arch{
-  position:relative;
-  z-index:2;
+    position:relative;
+    z-index:2;
 
-  width:min(650px,90vw);
-  min-height:540px;
+    width:min(650px,90vw);
+    min-height:520px;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+    padding:45px 25px;
 
-  padding:50px 30px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-  border:1px solid #dcae4d;
+    border:1px solid #d9a441;
 
-  border-radius:330px 330px 40px 40px;
+    border-radius:330px 330px 40px 40px;
 
-  background:
-    radial-gradient(circle at center,
-    rgba(103,35,15,.75),
-    rgba(30,7,4,.88));
+    background:
+    radial-gradient(
+        circle,
+        rgba(110,38,15,.75),
+        rgba(30,7,4,.92)
+    );
 
-  box-shadow:
-    0 0 35px rgba(225,170,70,.2),
-    0 0 100px rgba(225,150,40,.18),
-    inset 0 0 45px rgba(220,160,65,.1);
-
-  animation:appear 1.5s ease;
+    box-shadow:
+    0 0 35px rgba(224,170,70,.25),
+    0 0 100px rgba(224,150,50,.18),
+    inset 0 0 40px rgba(225,170,70,.1);
 }
 
-/* inner arch */
+.arch::before{
+    content:"";
 
-.arch:before{
-  content:"";
+    position:absolute;
+    inset:14px;
 
-  position:absolute;
-  inset:14px;
+    border:1px solid rgba(225,180,85,.3);
 
-  border:1px solid rgba(222,175,78,.28);
-
-  border-radius:315px 315px 30px 30px;
-
-  pointer-events:none;
+    border-radius:315px 315px 30px 30px;
 }
 
 .content{
-  position:relative;
-  z-index:2;
+    position:relative;
+    z-index:3;
 
-  max-width:550px;
+    width:100%;
 }
 
 /* OM */
 
 .om{
-  font-size:72px;
-  margin-bottom:20px;
+    font-size:72px;
 
-  color:#ffe29a;
+    margin-bottom:20px;
 
-  text-shadow:
-    0 0 10px #d9a441,
-    0 0 30px rgba(240,190,90,.7);
+    color:#ffe5a5;
 
-  animation:omGlow 2.5s infinite alternate;
+    text-shadow:
+    0 0 10px #dca947,
+    0 0 30px rgba(238,188,90,.7);
 }
 
-/* Hindi */
+/* TITLE */
 
 h1{
-  margin:0 0 20px;
+    margin:0 0 20px;
 
-  font-size:48px;
-  letter-spacing:2px;
+    font-size:48px;
 
-  color:#ffe0a0;
+    color:#ffe0a0;
 
-  text-shadow:0 0 15px rgba(228,180,76,.45);
+    letter-spacing:2px;
 }
 
-/* subtitle */
+/* SUBTITLE */
 
 .subtitle{
-  font-size:21px;
+    margin:18px 0 35px;
 
-  letter-spacing:5px;
+    font-size:21px;
 
-  margin:18px 0 34px;
+    letter-spacing:4px;
 
-  color:#e8c47b;
+    color:#e9c77d;
 }
 
-/* decorative line */
+.subtitle::before,
+.subtitle::after{
+    content:"✦";
 
-.subtitle:before,
-.subtitle:after{
-  content:"✦";
+    margin:0 14px;
 
-  margin:0 14px;
-
-  color:#d6a542;
+    color:#d6a542;
 }
 
-/* button */
+/* OPEN BUTTON */
 
 .openBtn{
-  position:relative;
+    padding:17px 44px;
 
-  border:1px solid #e5b84f;
+    border-radius:50px;
 
-  background:
-    linear-gradient(135deg,#a84a16,#71300f);
+    border:1px solid #e6b74c;
 
-  color:#ffe8ad;
+    background:
+    linear-gradient(
+        135deg,
+        #a94b16,
+        #71300f
+    );
 
-  padding:17px 45px;
+    color:#ffe8b0;
 
-  border-radius:50px;
+    font-size:17px;
 
-  font-size:17px;
+    letter-spacing:2px;
 
-  letter-spacing:2px;
+    cursor:pointer;
 
-  cursor:pointer;
+    box-shadow:
+    0 0 25px rgba(225,170,65,.3);
 
-  box-shadow:
-    0 0 20px rgba(225,170,65,.25),
-    inset 0 0 12px rgba(255,220,130,.08);
-
-  transition:.35s;
+    transition:.3s;
 }
 
 .openBtn:hover{
-  transform:scale(1.07);
+    transform:scale(1.06);
 
-  box-shadow:
-    0 0 35px rgba(225,170,65,.6),
-    0 0 70px rgba(225,150,50,.2);
-}
-
-.openBtn:active{
-  transform:scale(.97);
+    box-shadow:
+    0 0 40px rgba(225,170,65,.55);
 }
 
 /* ================= INVITATION ================= */
 
 .invitation{
-  display:none;
+    display:none;
 
-  min-height:100vh;
+    width:100%;
+    min-height:100vh;
 
-  padding:35px 12px 80px;
+    padding:30px 12px 80px;
 
-  text-align:center;
+    text-align:center;
 
-  background:
-    radial-gradient(circle at top,
-    #65240f 0%,
-    #2b0b06 35%,
-    #120302 90%);
+    background:
+    radial-gradient(
+        circle at top,
+        #65240f,
+        #2b0b06 40%,
+        #120302 100%
+    );
 }
 
 .invitation.show{
-  display:block;
+    display:block;
 
-  animation:invitationIn 1.2s ease;
+    animation:fadeIn 1s ease;
 }
+
+/* INVITATION IMAGE */
 
 .invitation img{
-  display:block;
+    display:block;
 
-  width:min(100%,820px);
+    width:min(100%,820px);
 
-  height:auto;
+    height:auto;
 
-  margin:0 auto;
+    margin:0 auto;
 
-  border-radius:8px;
+    border-radius:8px;
 
-  box-shadow:
-    0 20px 60px rgba(0,0,0,.75),
-    0 0 25px rgba(214,164,70,.12);
+    box-shadow:
+    0 20px 60px rgba(0,0,0,.75);
 }
 
-/* ================= SCRATCH SECTION ================= */
+/* ================= SCRATCH AREA ================= */
 
 .scratchWrap{
-  width:min(700px,94vw);
+    width:min(700px,94vw);
 
-  margin:50px auto 0;
+    margin:50px auto 0;
 
-  padding:30px 18px 38px;
+    padding:30px 18px 38px;
 
-  border:1px solid #c99835;
+    border:1px solid #c99835;
 
-  border-radius:20px;
+    border-radius:20px;
 
-  background:
-    linear-gradient(145deg,
-    #511a0c,
-    #260a05);
+    background:
+    linear-gradient(
+        145deg,
+        #511a0c,
+        #260a05
+    );
 
-  box-shadow:
-    0 0 35px rgba(201,152,53,.18),
-    inset 0 0 25px rgba(218,165,65,.06);
+    box-shadow:
+    0 0 35px rgba(201,152,53,.2);
 }
 
 .scratchTitle{
-  margin:0 0 10px;
+    margin:0 0 10px;
 
-  font-size:28px;
+    font-size:28px;
 
-  color:#ffe1a0;
+    color:#ffe1a0;
 }
 
 .hint{
-  margin:0 0 22px;
+    margin:0 0 22px;
 
-  font-size:14px;
+    font-size:14px;
 
-  line-height:1.6;
+    line-height:1.6;
 
-  color:#e8c77f;
+    color:#e7c77f;
 }
 
-/* scratch card */
+/* CARD */
 
 .scratchBox{
-  position:relative;
+    position:relative;
 
-  width:min(580px,90vw);
+    width:min(580px,90vw);
 
-  height:165px;
+    height:165px;
 
-  margin:auto;
+    margin:auto;
 
-  overflow:hidden;
+    overflow:hidden;
 
-  border-radius:16px;
+    border-radius:16px;
 
-  background:
-    linear-gradient(135deg,
-    #fff0bd,
-    #f2d98d);
+    background:
+    linear-gradient(
+        135deg,
+        #fff0bd,
+        #f2d98d
+    );
 
-  box-shadow:
-    inset 0 0 20px rgba(100,50,10,.15);
+    box-shadow:
+    inset 0 0 20px rgba(90,40,10,.2);
 }
 
-/* date */
+/* DATE UNDER GOLD */
 
 .date{
-  position:absolute;
+    position:absolute;
 
-  inset:0;
+    inset:0;
 
-  display:flex;
+    display:flex;
 
-  align-items:center;
+    align-items:center;
 
-  justify-content:center;
+    justify-content:center;
 
-  padding:15px;
+    padding:15px;
 
-  color:#5a190c;
+    color:#5a190c;
 
-  font-size:30px;
+    font-size:30px;
 
-  font-weight:bold;
+    font-weight:bold;
 
-  letter-spacing:2px;
+    letter-spacing:2px;
 
-  text-align:center;
+    text-align:center;
 
-  user-select:none;
+    user-select:none;
 }
 
-/* scratch canvas */
+/* SCRATCH CANVAS */
 
 #scratch{
-  position:absolute;
+    position:absolute;
 
-  left:0;
-  top:0;
+    left:0;
+    top:0;
 
-  width:100%;
-  height:100%;
+    width:100%;
+    height:100%;
 
-  z-index:5;
+    z-index:10;
 
-  touch-action:none;
+    display:block;
 
-  cursor:crosshair;
+    touch-action:none;
+
+    cursor:crosshair;
 }
 
-/* music button */
+/* ================= MUSIC ================= */
 
 .musicBtn{
-  position:fixed;
+    position:fixed;
 
-  right:20px;
-  bottom:20px;
+    right:20px;
+    bottom:20px;
 
-  z-index:20;
+    z-index:100;
 
-  width:58px;
-  height:58px;
+    width:58px;
+    height:58px;
 
-  border-radius:50%;
+    border-radius:50%;
 
-  border:1px solid #d9a441;
+    border:1px solid #d9a441;
 
-  background:#42150b;
+    background:#42150b;
 
-  color:#ffe4a0;
+    color:#ffe4a0;
 
-  font-size:24px;
+    font-size:24px;
 
-  cursor:pointer;
+    cursor:pointer;
 
-  display:none;
+    display:none;
 
-  box-shadow:
-    0 0 20px rgba(217,164,65,.35);
-
-  transition:.3s;
+    box-shadow:
+    0 0 20px rgba(217,164,65,.4);
 }
 
 .musicBtn.show{
-  display:block;
+    display:block;
 }
 
-.musicBtn:hover{
-  transform:scale(1.08);
-}
+/* ================= ANIMATION ================= */
 
-/* ================= ANIMATIONS ================= */
+@keyframes fadeIn{
 
-@keyframes appear{
-  from{
-    opacity:0;
-    transform:scale(.94) translateY(20px);
-  }
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
 
-  to{
-    opacity:1;
-    transform:scale(1) translateY(0);
-  }
-}
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 
-@keyframes invitationIn{
-  from{
-    opacity:0;
-    transform:translateY(25px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-@keyframes omGlow{
-  from{
-    text-shadow:
-      0 0 8px rgba(230,185,90,.3);
-  }
-
-  to{
-    text-shadow:
-      0 0 15px rgba(230,185,90,.9),
-      0 0 35px rgba(220,150,50,.5);
-  }
-}
-
-@keyframes glowPulse{
-  from{
-    transform:scale(.9);
-    opacity:.5;
-  }
-
-  to{
-    transform:scale(1.1);
-    opacity:1;
-  }
 }
 
 /* ================= MOBILE ================= */
 
 @media(max-width:600px){
 
-  .arch{
-    min-height:460px;
-    padding:40px 20px;
-  }
+    .arch{
+        min-height:450px;
+    }
 
-  .om{
-    font-size:55px;
-  }
+    .om{
+        font-size:55px;
+    }
 
-  h1{
-    font-size:35px;
-  }
+    h1{
+        font-size:35px;
+    }
 
-  .subtitle{
-    font-size:16px;
-    letter-spacing:3px;
-  }
+    .subtitle{
+        font-size:16px;
+        letter-spacing:3px;
+    }
 
-  .subtitle:before,
-  .subtitle:after{
-    margin:0 5px;
-  }
+    .subtitle::before,
+    .subtitle::after{
+        margin:0 5px;
+    }
 
-  .openBtn{
-    padding:15px 28px;
-    font-size:14px;
-  }
+    .openBtn{
+        padding:15px 28px;
+        font-size:14px;
+    }
 
-  .scratchTitle{
-    font-size:23px;
-  }
+    .date{
+        font-size:22px;
+    }
 
-  .date{
-    font-size:22px;
-  }
+    .scratchTitle{
+        font-size:23px;
+    }
 
 }
 </style>
@@ -514,66 +473,74 @@ h1{
 
 <body>
 
+
 <!-- ================= OPENING ================= -->
 
 <section class="opening" id="opening">
 
-  <div class="arch">
+    <div class="arch">
 
-    <div class="content">
+        <div class="content">
 
-      <div class="om">ॐ</div>
+            <div class="om">ॐ</div>
 
-      <h1>शुभ आरम्भ</h1>
+            <h1>शुभ आरम्भ</h1>
 
-      <div class="subtitle">
-        A NEW BEGINNING AWAITS
-      </div>
+            <div class="subtitle">
+                A NEW BEGINNING AWAITS
+            </div>
 
-      <button class="openBtn" id="openBtn">
-        OPEN THE INVITATION
-      </button>
+            <button
+                class="openBtn"
+                id="openBtn">
+
+                OPEN THE INVITATION
+
+            </button>
+
+        </div>
 
     </div>
-
-  </div>
 
 </section>
 
 
 <!-- ================= INVITATION ================= -->
 
-<section class="invitation" id="invitation">
+<section
+    class="invitation"
+    id="invitation">
 
-  <img
-    src="invitation.png"
-    alt="Freshers Party Invitation"
-  >
+    <img
+        src="invitation.png"
+        alt="Freshers Party Invitation"
+    >
 
 
-  <!-- SCRATCH DATE -->
+    <!-- SCRATCH CARD -->
 
-  <div class="scratchWrap">
+    <div class="scratchWrap">
 
-    <h2 class="scratchTitle">
-      ✨ A Little Surprise ✨
-    </h2>
+        <h2 class="scratchTitle">
+            ✨ A Little Surprise ✨
+        </h2>
 
-    <p class="hint">
-      Touch or drag across the golden card to reveal the date
-    </p>
+        <p class="hint">
+            Touch and scratch the golden card to reveal the date
+        </p>
 
-    <div class="scratchBox">
 
-      <div class="date">
-        12th SEPTEMBER 2026
-      </div>
+        <div class="scratchBox">
 
-      <canvas id="scratch"></canvas>
+            <div class="date">
+                12th SEPTEMBER 2026
+            </div>
+
+            <canvas id="scratch"></canvas>
+
+        </div>
 
     </div>
-
-  </div>
 
 </section>
 
@@ -581,403 +548,382 @@ h1{
 <!-- ================= MUSIC ================= -->
 
 <button
-  class="musicBtn"
-  id="musicBtn"
-  aria-label="Toggle music">
+    class="musicBtn"
+    id="musicBtn">
 
-  ♫
+    ♫
 
 </button>
 
 
 <audio
-  id="music"
-  src="krishna_krish_flute.mp3"
-  preload="auto"
-  loop>
+    id="music"
+    src="krishna_krish_flute.mp3"
+    preload="auto"
+    loop>
 </audio>
 
 
 <script>
 
-/* ================= ELEMENTS ================= */
+/* ================= OPENING ================= */
 
 const openBtn =
-  document.getElementById("openBtn");
+document.getElementById("openBtn");
 
 const opening =
-  document.getElementById("opening");
+document.getElementById("opening");
 
 const invitation =
-  document.getElementById("invitation");
+document.getElementById("invitation");
 
 const music =
-  document.getElementById("music");
+document.getElementById("music");
 
 const musicBtn =
-  document.getElementById("musicBtn");
+document.getElementById("musicBtn");
 
 
-/* ================= OPEN INVITATION ================= */
+openBtn.addEventListener(
+    "click",
+    function(){
 
-openBtn.addEventListener("click", async function(){
+        opening.style.display="none";
 
-  /* hide opening */
+        invitation.classList.add("show");
 
-  opening.style.display = "none";
+        musicBtn.classList.add("show");
 
-  /* show invitation */
+        /*
+        The click is a user interaction,
+        so the browser allows the music
+        to start here.
+        */
 
-  invitation.classList.add("show");
+        music.play()
+        .then(function(){
 
-  /* show music button */
+            musicBtn.textContent="♫";
 
-  musicBtn.classList.add("show");
+        })
+        .catch(function(){
 
-  /* play music */
+            musicBtn.textContent="🔇";
 
-  try{
+        });
 
-    music.currentTime = 0;
-
-    await music.play();
-
-    musicBtn.textContent = "♫";
-
-  }catch(error){
-
-    musicBtn.textContent = "🔇";
-
-  }
-
-  /* go to top */
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-});
-
-
-/* ================= MUSIC CONTROL ================= */
-
-musicBtn.addEventListener("click", async function(){
-
-  if(music.paused){
-
-    try{
-
-      await music.play();
-
-      musicBtn.textContent = "♫";
-
-    }catch(error){
-
-      musicBtn.textContent = "🔇";
+        window.scrollTo(0,0);
 
     }
+);
 
-  }else{
 
-    music.pause();
+/* ================= MUSIC BUTTON ================= */
 
-    musicBtn.textContent = "🔇";
+musicBtn.addEventListener(
+    "click",
+    function(){
 
-  }
+        if(music.paused){
 
-});
+            music.play()
+            .then(function(){
+
+                musicBtn.textContent="♫";
+
+            });
+
+        }else{
+
+            music.pause();
+
+            musicBtn.textContent="🔇";
+
+        }
+
+    }
+);
 
 
 /* ================= SCRATCH CARD ================= */
 
 const canvas =
-  document.getElementById("scratch");
+document.getElementById("scratch");
 
 const box =
-  document.querySelector(".scratchBox");
+document.querySelector(".scratchBox");
 
 const ctx =
-  canvas.getContext("2d");
-
-let drawing = false;
+canvas.getContext("2d");
 
 
-/* resize */
-function resizeCanvas(){
+let scratching=false;
 
-  const rect = box.getBoundingClientRect();
 
-  const dpr = window.devicePixelRatio || 1;
+/* CREATE GOLD COVER */
 
-  canvas.width = rect.width * dpr;
-  canvas.height = rect.height * dpr;
+function createScratchCard(){
 
-  canvas.style.width = rect.width + "px";
-  canvas.style.height = rect.height + "px";
+    const rect =
+    box.getBoundingClientRect();
 
-  ctx.setTransform(1,0,0,1,0,0);
-  ctx.scale(dpr,dpr);
+    const dpr =
+    window.devicePixelRatio || 1;
 
-  ctx.globalCompositeOperation = "source-over";
 
-  /* GOLD SCRATCH COVER */
+    canvas.width =
+    rect.width * dpr;
 
-  const gradient = ctx.createLinearGradient(
-    0,
-    0,
-    rect.width,
-    rect.height
-  );
+    canvas.height =
+    rect.height * dpr;
 
-  gradient.addColorStop(0,"#e5bd58");
-  gradient.addColorStop(0.5,"#b98220");
-  gradient.addColorStop(1,"#d9aa42");
 
-  ctx.fillStyle = gradient;
+    canvas.style.width =
+    rect.width+"px";
 
-  ctx.fillRect(
-    0,
-    0,
-    rect.width,
-    rect.height
-  );
+    canvas.style.height =
+    rect.height+"px";
 
-  /* GOLD TEXTURE */
 
-  ctx.fillStyle = "rgba(255,240,180,.35)";
-
-  for(let x=0; x<rect.width; x+=18){
-
-    for(let y=0; y<rect.height; y+=18){
-
-      ctx.beginPath();
-
-      ctx.arc(
-        x,
-        y,
-        1.2,
+    ctx.setTransform(
+        dpr,
         0,
-        Math.PI*2
-      );
+        0,
+        dpr,
+        0,
+        0
+    );
 
-      ctx.fill();
 
-    }
-  }
-}
-    .5,
-    "#b77b1e"
-  );
+    /* GOLD COVER */
 
-  gradient.addColorStop(
-    1,
-    "#d6a943"
-  );
+    ctx.globalCompositeOperation =
+    "source-over";
 
-  ctx.fillStyle =
+
+    const gradient =
+    ctx.createLinearGradient(
+        0,
+        0,
+        rect.width,
+        rect.height
+    );
+
+
+    gradient.addColorStop(
+        0,
+        "#8d641a"
+    );
+
+    gradient.addColorStop(
+        .25,
+        "#d6aa43"
+    );
+
+    gradient.addColorStop(
+        .5,
+        "#b98220"
+    );
+
+    gradient.addColorStop(
+        .75,
+        "#dfb650"
+    );
+
+    gradient.addColorStop(
+        1,
+        "#946918"
+    );
+
+
+    ctx.fillStyle =
     gradient;
 
-  ctx.fillRect(
-    0,
-    0,
-    rect.width,
-    rect.height
-  );
 
-  /* texture */
-
-  ctx.fillStyle =
-    "rgba(255,235,170,.35)";
-
-  for(
-    let x=0;
-    x<rect.width;
-    x+=18
-  ){
-
-    for(
-      let y=0;
-      y<rect.height;
-      y+=18
-    ){
-
-      ctx.beginPath();
-
-      ctx.arc(
-        x,
-        y,
-        1.2,
+    ctx.fillRect(
         0,
-        Math.PI*2
-      );
-
-      ctx.fill();
-
-    }
-
-  }
-
-}
+        0,
+        rect.width,
+        rect.height
+    );
 
 
-/* scratch */
+    /* CARD TEXT */
 
-function scratch(x,y){
+    ctx.fillStyle =
+    "rgba(255,240,190,.95)";
 
-  ctx.globalCompositeOperation =
+
+    ctx.font =
+    "bold 21px Georgia";
+
+
+    ctx.textAlign =
+    "center";
+
+
+    ctx.textBaseline =
+    "middle";
+
+
+    ctx.fillText(
+        "✨  SCRATCH TO REVEAL  ✨",
+        rect.width/2,
+        rect.height/2
+    );
+
+
+    /* RESET */
+
+    ctx.globalCompositeOperation =
     "destination-out";
 
-  ctx.beginPath();
-
-  ctx.arc(
-    x,
-    y,
-    28,
-    0,
-    Math.PI*2
-  );
-
-  ctx.fill();
-
 }
 
 
-/* position */
+/* SCRATCH POSITION */
 
 function getPosition(e){
 
-  const rect =
+    const rect =
     canvas.getBoundingClientRect();
 
-  let clientX;
-  let clientY;
+    return{
 
-  if(e.touches){
+        x:e.clientX-rect.left,
 
-    clientX =
-      e.touches[0].clientX;
+        y:e.clientY-rect.top
 
-    clientY =
-      e.touches[0].clientY;
-
-  }else{
-
-    clientX =
-      e.clientX;
-
-    clientY =
-      e.clientY;
-
-  }
-
-  return{
-
-    x:clientX - rect.left,
-
-    y:clientY - rect.top
-
-  };
+    };
 
 }
 
 
-/* start */
+/* SCRATCH */
 
-function startScratch(e){
+function scratchAt(x,y){
 
-  drawing = true;
-
-  const p =
-    getPosition(e);
-
-  scratch(
-    p.x,
-    p.y
-  );
-
-  e.preventDefault();
-
-}
+    ctx.globalCompositeOperation =
+    "destination-out";
 
 
-/* move */
+    ctx.beginPath();
 
-function moveScratch(e){
 
-  if(!drawing)return;
+    ctx.arc(
+        x,
+        y,
+        30,
+        0,
+        Math.PI*2
+    );
 
-  const p =
-    getPosition(e);
 
-  scratch(
-    p.x,
-    p.y
-  );
-
-  e.preventDefault();
+    ctx.fill();
 
 }
 
 
-/* stop */
-
-function endScratch(){
-
-  drawing = false;
-
-}
-
-
-/* mouse */
+/* START SCRATCH */
 
 canvas.addEventListener(
-  "mousedown",
-  startScratch
+    "pointerdown",
+    function(e){
+
+        scratching=true;
+
+        canvas.setPointerCapture(
+            e.pointerId
+        );
+
+        const p =
+        getPosition(e);
+
+        scratchAt(
+            p.x,
+            p.y
+        );
+
+        e.preventDefault();
+
+    }
 );
 
+
+/* CONTINUE SCRATCH */
+
 canvas.addEventListener(
-  "mousemove",
-  moveScratch
+    "pointermove",
+    function(e){
+
+        if(!scratching)return;
+
+        const p =
+        getPosition(e);
+
+        scratchAt(
+            p.x,
+            p.y
+        );
+
+        e.preventDefault();
+
+    }
 );
+
+
+/* STOP */
+
+canvas.addEventListener(
+    "pointerup",
+    function(e){
+
+        scratching=false;
+
+        try{
+
+            canvas.releasePointerCapture(
+                e.pointerId
+            );
+
+        }catch(error){}
+
+    }
+);
+
+
+canvas.addEventListener(
+    "pointercancel",
+    function(){
+
+        scratching=false;
+
+    }
+);
+
+
+/* INITIALIZE AFTER PAGE LOAD */
 
 window.addEventListener(
-  "mouseup",
-  endScratch
+    "load",
+    function(){
+
+        createScratchCard();
+
+    }
 );
 
 
-/* touch */
-
-canvas.addEventListener(
-  "touchstart",
-  startScratch,
-  {passive:false}
-);
-
-canvas.addEventListener(
-  "touchmove",
-  moveScratch,
-  {passive:false}
-);
+/* RESIZE */
 
 window.addEventListener(
-  "touchend",
-  endScratch
+    "resize",
+    function(){
+
+        createScratchCard();
+
+    }
 );
-
-
-/* resize */
-
-window.addEventListener(
-  "resize",
-  resizeCanvas
-);
-
-
-/* initial */
-
-resizeCanvas();
 
 </script>
 
